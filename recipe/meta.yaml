@@ -1,5 +1,5 @@
 {% set name = "pytorch-lightning" %}
-{% set version = "1.9.0" %}
+{% set version = "1.9.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,46 +7,49 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5b75fe936d16ef86dae22ea1cb0a73db281605cade682c0ef44e6508a99a0b37
+  sha256: 479164caea190d49ee2a218eef7e001888be56db912b417639b047e8f9ca8a07
 
 build:
-  number: 1
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+  skip: True  # [py<37]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
   host:
     - pip
-    - python >=3.7, <3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
+    - python
+    - setuptools
+    - wheel
   run:
-    - python >=3.7, <3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
+    - python >=3.7,<3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
     - packaging >=17.1
     - numpy >=1.17.2
     - pyyaml >=5.4
     - pytorch >=1.10.0
     - tqdm >=4.57.0
-    - fsspec[http] >2021.06.0
+    - fsspec >2021.06.0
     - torchmetrics >=0.7.0
     - typing-extensions >=4.0.0
-    - lightning-utilities >=0.4.2
+    - lightning-utilities >=0.6.0.post0
 
 test:
   imports:
     - pytorch_lightning
+  requires:
+    - python >=3.7,<3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
+    - pip
   commands:
     - pip check
-  requires:
-    - python >=3.7, <3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
-    - pip
 
 about:
   home: https://pypi.org/project/pytorch-lightning/
   summary: PyTorch Lightning is the lightweight PyTorch wrapper for ML researchers. Scale your models. Write less boilerplate.
   license: Apache-2.0
+  license_family: Apache
   license_file: LICENSE
   description: |
     Lightning is a way to organize your PyTorch code to decouple the science code from the engineering.
-     It's more of a style-guide than a framework.
+    It's more of a style-guide than a framework.
 
     In Lightning, you organize your code into 3 distinct categories:
 
@@ -55,15 +58,13 @@ about:
     3. Non-essential research code (logging, etc. this goes in Callbacks).
 
     Although your research/production project might start simple, once you add things like GPU AND TPU training,
-     16-bit precision, etc, you end up spending more time engineering than researching.
-     Lightning automates AND rigorously tests those parts for you.
+    16-bit precision, etc, you end up spending more time engineering than researching.
+    Lightning automates AND rigorously tests those parts for you.
 
     Overall, Lightning guarantees rigorously tested, correct, modern best practices for the automated parts.
 
-    Documentation
-    -------------
-    - https://pytorch-lightning.readthedocs.io/en/latest
-    - https://pytorch-lightning.readthedocs.io/en/stable
+  doc_url: https://pytorch-lightning.readthedocs.io
+  dev_url: https://github.com/Lightning-AI/lightning
 
 extra:
   recipe-maintainers:
