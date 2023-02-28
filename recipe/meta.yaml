@@ -11,7 +11,8 @@ source:
 
 build:
   number: 0
-  skip: True  # [py<37]
+  # TODO: this upper bound is because of PyTorch issue with dataclass
+  skip: True  # [py<37 or py>311]
   script: {{ PYTHON }} -m pip install . -vv --no-deps
 
 requirements:
@@ -21,7 +22,7 @@ requirements:
     - setuptools
     - wheel
   run:
-    - python >=3.7,<3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
+    - python
     - packaging >=17.1
     - numpy >=1.17.2
     - pyyaml >=5.4
