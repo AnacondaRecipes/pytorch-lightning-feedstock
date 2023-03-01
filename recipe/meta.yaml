@@ -37,7 +37,7 @@ test:
   imports:
     - pytorch_lightning
   requires:
-    - python >=3.7,<3.11 # TODO: this upper bound is because of PyTorch issue with dataclass
+    - python
     - pip
   commands:
     - pip check
