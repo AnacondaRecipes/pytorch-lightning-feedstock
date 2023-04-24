@@ -1,5 +1,5 @@
 {% set name = "pytorch-lightning" %}
-{% set version = "1.9.5" %}
+{% set version = "2.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 925fe7b80ddf04859fa385aa493b260be4000b11a2f22447afb4a932d1f07d26
+  sha256: b37a3677a65cda920260de3899ea9dfdd221b0a2d838a0439e31bd927efa61f4
 
 build:
   number: 0
@@ -26,12 +26,13 @@ requirements:
     - packaging >=17.1
     - numpy >=1.17.2
     - pyyaml >=5.4
-    - pytorch >=1.10.0
+    - pytorch >=1.11.0
+    - future >=0.17.1
     - tqdm >=4.57.0
-    - fsspec >2021.06.0
+    - fsspec >2021.06.1
     - torchmetrics >=0.7.0
     - typing-extensions >=4.0.0
-    - lightning-utilities >=0.6.0.post0
+    - lightning-utilities >=0.7.0
 
 test:
   imports:
