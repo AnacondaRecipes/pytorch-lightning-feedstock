@@ -10,7 +10,7 @@ source:
   sha256: 479164caea190d49ee2a218eef7e001888be56db912b417639b047e8f9ca8a07
 
 build:
-  number: 0
+  number: 1
   # TODO: this upper bound is because of PyTorch issue with dataclass
   skip: True  # [py<37 or py>311]
   script: {{ PYTHON }} -m pip install . -vv --no-deps
