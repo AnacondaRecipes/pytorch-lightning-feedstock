@@ -12,7 +12,7 @@ source:
 build:
   number: 1
   # TODO: the upper bound is because of PyTorch issue with dataclass, see https://github.com/Lightning-AI/lightning/issues/15614
-  skip: True  # [py<37 or py>311]
+  skip: True  # [py<37 or py>310]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
