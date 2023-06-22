@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   skip: True  # [py<37]
-  # skipping py311 for win and linux-ppc64le because for now dep pytorch is not supported on such platformsyou 
+  # skipping py311 for and linux-ppc64le because for now dep pytorch is not supported on such platform
   skip: True  # [py>310 and (linux and ppc64le)]
   script: {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
 
