@@ -75,5 +75,3 @@ extra:
     - williamFalcon
     - borda
     - carmocca
-  skip-lints:
-    - python_build_tool_in_run
