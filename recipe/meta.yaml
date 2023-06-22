@@ -11,10 +11,9 @@ source:
 
 build:
   number: 0
-  # the upper bound is because of PyTorch issue with dataclass, see https://github.com/Lightning-AI/lightning/issues/15614
   skip: True  # [py<37]
   # skipping py311 for win and linux-ppc64le because for now dep pytorch is not supported on such platformsyou 
-  skip: True  # [py>310 and (win or (linux and ppc64le))]
+  skip: True  # [py>310 and (linux and ppc64le)]
   script: {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
 
 requirements:
