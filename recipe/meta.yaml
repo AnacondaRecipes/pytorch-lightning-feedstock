@@ -12,6 +12,8 @@ source:
 build:
   number: 1
   skip: True  # [py<37]
+  # missing torchmetrics for linux-64 py312
+  skip: True  # [linux and x86_64 and py>311]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
