@@ -22,7 +22,7 @@ requirements:
     - wheel
   run:
     - python
-    - packaging >=20.0s
+    - packaging >=20.0
     - numpy >=1.17.2
     - pyyaml >=5.4
     - pytorch >=2.0.0
