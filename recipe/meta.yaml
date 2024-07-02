@@ -1,5 +1,5 @@
 {% set name = "pytorch-lightning" %}
-{% set version = "2.0.3" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3b12080f6b3205cc7aaa42a1e08b221007b999a63c0032d0090f29ff8d0d7221
+  sha256: 89caf90e3543b314508493f26e0eca8d5e10e43e3d9e6c143acd8ddceb584ce2
 
 build:
   number: 0
   skip: True  # [py<37]
-  # skipping py311 for and linux-ppc64le because for now dep pytorch is not supported on such platform
-  skip: True  # [py>310 and (linux and ppc64le)]
-  script: {{ PYTHON }} -m pip install . -vvv --no-deps --no-build-isolation
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -23,22 +21,22 @@ requirements:
     - setuptools
     - wheel
   run:
+    # Dependencies from pytorch-lightning/requirements/pytorch/base.txt
     - python
-    - packaging >=17.1
+    - packaging >=20.0
     - numpy >=1.17.2
     - pyyaml >=5.4
-    - pytorch >=1.11.0
+    - pytorch >=2.0.0
     - tqdm >=4.57.0
-    - fsspec >2021.06.1
+    - fsspec >=2022.5.0
     - torchmetrics >=0.7.0
-    - typing-extensions >=4.0.0
-    - lightning-utilities >=0.7.0
+    - typing-extensions >=4.4.0
+    - lightning-utilities >=0.8.0
 
 test:
   imports:
     - pytorch_lightning
   requires:
-    - python
     - pip
   commands:
     - pip check
