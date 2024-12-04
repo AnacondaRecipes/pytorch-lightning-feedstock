@@ -10,7 +10,7 @@ source:
   sha256: 3b12080f6b3205cc7aaa42a1e08b221007b999a63c0032d0090f29ff8d0d7221
 
 build:
-  number: 0
+  number: 1
   skip: True  # [py<37]
   # skipping py311 for and linux-ppc64le because for now dep pytorch is not supported on such platform
   skip: True  # [py>310 and (linux and ppc64le)]
