@@ -1,17 +1,17 @@
 {% set name = "pytorch-lightning" %}
-{% set version = "2.3.0" %}
+{% set version = "2.5.0.post0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 89caf90e3543b314508493f26e0eca8d5e10e43e3d9e6c143acd8ddceb584ce2
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 347235bf8573b4ebcf507a0dd755fcb9ce58c420c77220a9756a6edca0418532
 
 build:
   number: 0
-  skip: True  # [py<37]
+  skip: True  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -24,14 +24,13 @@ requirements:
     # Dependencies from pytorch-lightning/requirements/pytorch/base.txt
     - python
     - packaging >=20.0
-    - numpy >=1.17.2
     - pyyaml >=5.4
-    - pytorch >=2.0.0
+    - pytorch >=2.1.0
     - tqdm >=4.57.0
     - fsspec >=2022.5.0
     - torchmetrics >=0.7.0
     - typing-extensions >=4.4.0
-    - lightning-utilities >=0.8.0
+    - lightning-utilities >=0.10.0
 
 test:
   imports:
