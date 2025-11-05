@@ -24,22 +24,23 @@ requirements:
   run:
     # Dependencies from pytorch-lightning/requirements/pytorch/base.txt
     - python
-    - packaging >=20.0
-    - pyyaml >5.4
     - pytorch >=2.1.0
     - tqdm >=4.57.0
+    - pyyaml >5.4
     - fsspec >=2022.5.0
     - torchmetrics >0.7.0
-    - typing-extensions >=4.4.0
-    - lightning-utilities >=0.10.0
+    - packaging >=20.0
     - typing_extensions >4.5.0
+    - lightning-utilities >=0.10.0
   run_constrained:
+    # Dependencies from pytorch-lightning/requirements/pytorch/extra.txt
     - matplotlib-base >3.1
     - omegaconf >=2.2.3
     - hydra-core >=1.2.0
     - jsonargparse >=4.39.0
     - rich >=12.3.0
     - tensorboardX >=2.2
+    - bitsandbytes >=0.45.2 # [not osx]
 
 test:
   imports:
