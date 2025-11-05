@@ -43,6 +43,7 @@ requirements:
     - bitsandbytes >=0.45.2 # [not osx]
 
 test:
+  # No tests to run in tarballs both from pypi and github
   imports:
     - pytorch_lightning
   requires:
@@ -72,7 +73,7 @@ about:
 
     Overall, Lightning guarantees rigorously tested, correct, modern best practices for the automated parts.
 
-  doc_url: https://pytorch-lightning.readthedocs.io
+  doc_url: https://lightning.ai/docs/pytorch/stable
   dev_url: https://github.com/Lightning-AI/lightning
 
 extra:
