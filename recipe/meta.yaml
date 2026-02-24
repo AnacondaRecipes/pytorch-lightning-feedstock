@@ -1,5 +1,5 @@
 {% set name = "pytorch-lightning" %}
-{% set version = "2.5.5" %}
+{% set version = "2.6.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: d6fc8173d1d6e49abfd16855ea05d2eb2415e68593f33d43e59028ecb4e64087
+  sha256: ba08f8901cf226fcca473046ad9346f414e99117762dc869c76e650d5b3d7bdc
 
 build:
   number: 0
-  skip: true  # [py<39]
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [py<39]
 
 requirements:
   host:
@@ -24,23 +24,23 @@ requirements:
   run:
     # Dependencies from pytorch-lightning/requirements/pytorch/base.txt
     - python
-    - pytorch >=2.1.0
-    - tqdm >=4.57.0
-    - pyyaml >5.4
-    - fsspec >=2022.5.0
-    - torchmetrics >0.7.0
-    - packaging >=20.0
-    - typing_extensions >4.5.0
-    - lightning-utilities >=0.10.0
+    - pytorch >=2.1.0,<2.10.0
+    - tqdm >=4.57.0,<4.68.0
+    - pyyaml >5.4,<6.1.0
+    - fsspec >=2022.5.0,<2026.2.0
+    - torchmetrics >0.7.0,<1.9.0
+    - packaging >=20.0,<=25.0
+    - typing_extensions >4.5.0,<4.16.0
+    - lightning-utilities >=0.10.0,<0.16.0
   run_constrained:
     # Dependencies from pytorch-lightning/requirements/pytorch/extra.txt
-    - matplotlib-base >3.1
-    - omegaconf >=2.2.3
-    - hydra-core >=1.2.0
-    - jsonargparse >=4.39.0
-    - rich >=12.3.0
-    - tensorboardX >=2.2
-    - bitsandbytes >=0.45.2 # [not osx]
+    - matplotlib-base >3.1,<3.11.0
+    - omegaconf >=2.2.3,<2.4.0
+    - hydra-core >=1.2.0,<1.4.0
+    - jsonargparse >=4.39.0,<4.46.0
+    - rich >=12.3.0,<14.3.0
+    - tensorboardX >=2.2,<2.7.0
+    - bitsandbytes >=0.45.2,<0.47.0 # [not osx]
 
 test:
   # No tests to run in tarballs both from pypi and github
@@ -52,7 +52,7 @@ test:
     - pip check
 
 about:
-  home: https://lightning.ai/
+  home: https://lightning.ai
   summary: PyTorch Lightning is the lightweight PyTorch wrapper for ML researchers. Scale your models. Write less boilerplate.
   license: Apache-2.0
   license_family: Apache
