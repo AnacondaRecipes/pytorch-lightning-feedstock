@@ -21,7 +21,6 @@ requirements:
     - setuptools
     - wheel
     - packaging
-    - pytorch {{ pytorch }}
   run:
     # Dependencies from pytorch-lightning/requirements/pytorch/base.txt
     - python
